@@ -1,14 +1,43 @@
 {% extends "index.html" %}
 {% block content %}
-    <br>
-    <p><b>Classified files</b></p>
-    <table border="1" style="border-collapse:collapse" width="800"><tbody>
-    <tr><th width="400">File Name</th><th width="400">Category<td></tr>
-    {% for file in final %}
-        <tr><td width="400">{{ file }}</td><td>{{ final[file] }}</td></tr>
-    {% endfor %}
-    </tbody></table>
-    <br>
-    <form action="/getzip/" method="POST" ><input type="submit" name="getzip" value="Get ZIP file"></form></br>
-    <form action="/display/" method="POST" ><input type="submit" name="display" value="Classified Files"></form>
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+
+                <div class="panel-body">
+					<table class="table table-bordered table-hover">
+                    <caption class="align-left text-uppercase text-primary" style="font-size: large">Classified Files</caption>
+						<thead>
+                            <tr>
+								<th width="50%">File Name</th>
+								<th width="50%">Category</th>
+							</tr>
+                        </thead>
+                        <tbody>
+							{% for file in final %}
+
+							<tr class="active">
+								<td width="50%">{{ file }}</td>
+								<td>{{ final[file] }}</td>
+							</tr>
+
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+        </div>
+    </div>
+
+
+	<br>
+	<form action="/display/" method="POST" >
+		<div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+				<button type="submit" class="btn btn-info getzip" name="display" >Show Complete Classified Files Details
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                </button>
+			</div>
+		</div>
+	</form>
+
 {% endblock %}

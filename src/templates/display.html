@@ -1,25 +1,45 @@
 {% extends "index.html" %}
 {% block content %}
+
+	<hr>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-1">
+                <div class="panel-body">
+					<table  class="table table-bordered table-hover">
+                    <caption class="align-left text-primary" style="font-size: large">Details of Classified Files</caption>
+                        <thead>
+                            <tr>
+								<th width="50%">File Name</th>
+								<th width="50%">Category</th>
+								<th width="50%">Source Path</th>
+								<th width="50%">Destination Path</th>
+							</tr>
+                        </thead>
+                        <tbody>
+							{% for i in range(0,len) %}
+							<tr>
+								<td width="50%">{{ filename[i] }}</td>
+								<td width="50%">{{ categories[i] }}</td>
+								<td width="50%">{{ srcpath[i] }}</td>
+								<td width="50%">{{ destpath[i] }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+        </div>
+    </div>
+
     <br>
-    <p><b>Classified files</b></p>
-    <table border="1" style="border-collapse:collapse" width="800"><tbody>
-    <tr><th width="400">File Name</th>
-        <th width="400">Category</th>
-        <th width="400">Source Path</th>
-        <th width="400">Destination Path</th>
-    </tr>
-    {% for i in range(0,len) %}
-        <tr>
-            <td width="400">{{ filename[i] }}</td>
-            <td width="400">{{ categories[i] }}</td>
-            <td width="400">{{ srcpath[i] }}</td>
-            <td width="400">{{ destpath[i] }}</td>
-            </tr>
-    {% endfor %}
 
-
-
-    </tbody></table>
-    <br>
-    <form action="/getzip/" method="POST" ><input type="submit" name="getzip" value="Download-Get ZIP file"></form></br>
+    <form action="/getzip/" method="POST" >
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<button type="submit" class="btn btn-primary getzip" name="getzip" >Download-Get ZIP file
+                <span class="glyphicon glyphicon-download-alt"></span>
+                </button>
+			</div>
+        </div>
+	</form>
+	<br>
 {% endblock %}
